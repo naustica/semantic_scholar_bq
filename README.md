@@ -17,7 +17,7 @@ $ export s2_key=YOUR_API_KEY
 
 To download all datasets within a Semantic Scholar data snapshot, use:
 ```bash
-$ python3 semantic_scholar.py
+$ python3 semantic_scholar.py --logging=info
 ```
 
 To download individual datasets within a Semantic Scholar data snapshot, use:

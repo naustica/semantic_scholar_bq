@@ -4,6 +4,13 @@ import os
 from pathlib import Path
 import shutil
 import logging
+import sys
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s : %(levelname)s : %(message)s',
+    handlers=[logging.StreamHandler(sys.stdout)],
+)
 
 
 class SemanticScholar:
@@ -87,3 +94,4 @@ if __name__ == '__main__':
                          snapshot_date='2025-02-25')
     s2.download_papers()
     s2.download_venues()
+    s2.download_abstracts()
