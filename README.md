@@ -6,6 +6,7 @@ This repository contains instructions on how to extract and transform Semantic S
 
 - [Python3](https://www.python.org)
   - [gsutil](https://pypi.org/project/gsutil/)
+  - [requests](https://pypi.org/project/requests/)
 
 ## Download snapshot
 
