@@ -42,5 +42,5 @@ $ gsutil -m cp -r /scratch/users/haupka/semantic-scholar-snapshot gs://bigschol
 ## Creating a BigQuery Table
 
 ```bash
-$ bq load --ignore_unknown_values --source_format=NEWLINE_DELIMITED_JSON subugoe-collaborative.semantic_scholar.papers gs://bigschol/semantic-scholar-snapshot/papers/*.jsonl.gz papers_schema.json
+$ bq load --ignore_unknown_values --source_format=NEWLINE_DELIMITED_JSON subugoe-collaborative.semantic_scholar.papers gs://bigschol/semantic-scholar-snapshot/papers/*.jsonl.gz s2_papers_schema.json
 ```
