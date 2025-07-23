@@ -87,6 +87,25 @@ class SemanticScholar:
                     shutil.copyfileobj(response.raw, file)
             logging.info(f'Successfully download file {n} of {len(abstracts["files"])}.')
 
+    def download_citations(self):
+
+        citations_download_path = os.path.join(self.download_path, 'citations')
+
+        os.makedirs(citations_download_path, exist_ok=False)
+
+        logging.info('Download: citations')
+
+        citations = requests.get(url=f'http://api.semanticscholar.org/datasets/v1/release/{self.snapshot_date}/dataset/citations',
+                              headers={'x-api-key': self.api_key}).json()
+
+        for n, file in enumerate(citations['files'], start=1):
+            logging.info(f'Download file {n} of {len(citations["files"])}.')
+            with requests.get(file, stream=True) as response:
+                with open(f'{citations_download_path}/citations-part{n}.jsonl.gz', 'wb') as file:
+                    response.raw.read = functools.partial(response.raw.read, decode_content=False)
+                    shutil.copyfileobj(response.raw, file)
+            logging.info(f'Successfully download file {n} of {len(citations["files"])}.')
+
 
 if __name__ == '__main__':
     s2 = SemanticScholar(api_key=os.environ['s2_key'],
@@ -95,3 +114,4 @@ if __name__ == '__main__':
     s2.download_papers()
     s2.download_venues()
     s2.download_abstracts()
+    #s2.download_citations()
