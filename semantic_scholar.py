@@ -62,11 +62,11 @@ class SemanticScholar:
 
         os.makedirs(papers_download_path, exist_ok=not self.overwrite_snapshot)
 
-        papers = requests.get(
-            url=f'http://api.semanticscholar.org/datasets/v1/release/{self.snapshot_date}/dataset/papers',
-            headers={'x-api-key': self.api_key}).json()
-
         logging.info('Download: papers')
+
+        papers = requests.get(
+            url=f'https://api.semanticscholar.org/datasets/v1/release/{self.snapshot_date}/dataset/papers',
+            headers={'x-api-key': self.api_key}).json()
 
         if papers.get('files'):
             self.download(papers, papers_download_path, file_prefix='papers', start=start)
@@ -84,7 +84,7 @@ class SemanticScholar:
         logging.info('Download: venues')
 
         venues = requests.get(
-            url=f'http://api.semanticscholar.org/datasets/v1/release/{self.snapshot_date}/dataset/publication-venues',
+            url=f'https://api.semanticscholar.org/datasets/v1/release/{self.snapshot_date}/dataset/publication-venues',
             headers={'x-api-key': self.api_key}).json()
 
         if venues.get('files'):
@@ -102,8 +102,9 @@ class SemanticScholar:
 
         logging.info('Download: abstracts')
 
-        abstracts = requests.get(url=f'http://api.semanticscholar.org/datasets/v1/release/{self.snapshot_date}/dataset/abstracts',
-                              headers={'x-api-key': self.api_key}).json()
+        abstracts = requests.get(
+            url=f'https://api.semanticscholar.org/datasets/v1/release/{self.snapshot_date}/dataset/abstracts',
+            headers={'x-api-key': self.api_key}).json()
 
         if abstracts.get('files'):
             self.download(abstracts, abstracts_download_path, file_prefix='abstracts', start=start)
@@ -118,11 +119,11 @@ class SemanticScholar:
 
         os.makedirs(citations_download_path, exist_ok=not self.overwrite_snapshot)
 
-        citations = requests.get(
-            url=f'http://api.semanticscholar.org/datasets/v1/release/{self.snapshot_date}/dataset/citations',
-            headers={'x-api-key': self.api_key}).json()
-
         logging.info('Download: citations')
+
+        citations = requests.get(
+            url=f'https://api.semanticscholar.org/datasets/v1/release/{self.snapshot_date}/dataset/citations',
+            headers={'x-api-key': self.api_key}).json()
 
         if citations.get('files'):
             self.download(citations, citations_download_path, file_prefix='citations', start=start)
