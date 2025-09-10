@@ -29,8 +29,8 @@ import os
 s2 = SemanticScholar(api_key=os.environ['s2_key'],
                      download_path='/scratch/users/haupka/semantic-scholar-snapshot',
                      snapshot_date='2025-02-25')
-s2.download_papers()
-s2.download_venues()
+s2.download_entity(entity='papers')
+s2.download_entity(entity='publication-venues')
 ```
 
 ## Uploading Files to Google Bucket
